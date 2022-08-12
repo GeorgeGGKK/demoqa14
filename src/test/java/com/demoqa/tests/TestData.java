@@ -1,18 +1,39 @@
-package com.demoqa;
+package com.demoqa.tests;
+
+import com.demoqa.utils.RandomUtils;
+import com.github.javafaker.Faker;
 
 public class TestData {
-    private static String firstName = "George";
-    private static String lastName = "Test";
-    private static String email = "test@test.ru";
-    private static String phoneNumber = "1234567890";
+    static Faker faker = new Faker();
+    private static String firstName = faker.name().firstName();
+    private static String lastName = faker.name().lastName();
+    private static String email = faker.internet().emailAddress();
+    private static String phoneNumber = RandomUtils.getRandomString(10);
+    ;
     private static String subject = "Chemistry";
-    private static String currentAddress = "Moscow";
+    private static String currentAddress = faker.address().fullAddress();
     private static String picture = "src/test/resources/1.jpeg";
     private static String state = "NCR";
     private static String city = "Delhi";
     private static String title_thanks = "Thanks for submitting the form";
     private static String gender = "Male";
     private static String date_of_birth = "20 December,1994";
+    private static String day = "20";
+    private static String month = "December";
+    private static String year = "1994";
+
+    public static String getDay() {
+        return day;
+    }
+
+    public static String getMonth() {
+        return month;
+    }
+
+    public static String getYear() {
+        return year;
+    }
+
     private static String hobbies = "Sports, Reading, Music";
 
     public static String getTitle_thanks() {
