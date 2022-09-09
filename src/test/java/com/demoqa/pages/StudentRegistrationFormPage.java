@@ -3,6 +3,7 @@ package com.demoqa.pages;
 import com.codeborne.selenide.SelenideElement;
 import com.demoqa.tests.TestData;
 import com.demoqa.components.CalenderComponent;
+import io.qameta.allure.Step;
 
 import java.io.File;
 
@@ -26,7 +27,7 @@ public class StudentRegistrationFormPage {
     SelenideElement state = $x("//input[@id='react-select-3-input']");
     SelenideElement city = $x("//input[@id='react-select-4-input']");
     SelenideElement submitButton = $x("//button[@id='submit']");
-
+    @Step("Заполнение формы регистраии")
     public ComplitedFormPage fillRegistrationForm() {
         firstName.setValue(TestData.getFirstName());
         lastName.setValue(TestData.getLastName());
@@ -45,6 +46,7 @@ public class StudentRegistrationFormPage {
         submitButton.pressEnter();
         return new ComplitedFormPage();
     }
+    @Step("Заполнение поля Дата рождения")
     public void setDateOfBirth(String day, String month, String year) {
         dateOfBirth.click();
         calenderComponent.setDate(day, month, year);
