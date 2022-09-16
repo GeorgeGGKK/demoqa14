@@ -14,13 +14,21 @@ public class BaseTest {
     static void setUp() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
 
         Configuration.browserCapabilities = capabilities;
         Configuration.browserSize = "2160x1440";
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        if(System.getProperty("remote").equals("true")) {
+            Configuration.browser = System.getProperty("browser_name");
+            Configuration.browserVersion = System.getProperty("browser_version");
+            Configuration.browserSize = System.getProperty("browser_size");
+            Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", true);
+        } else {
+            Configuration.browser ="chrome";
+            Configuration.browserSize ="1920x1180";
+        }
     }
 
     @AfterEach
