@@ -5,6 +5,7 @@ import com.demoqa.base.BaseTest;
 import com.demoqa.pages.StudentRegistrationFormPage;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -15,6 +16,7 @@ public class DemoQaTest extends BaseTest {
 
 
     @Test
+    @Tag("demo_qa")
     @DisplayName("Заполнение и проверка формы регистрации")
     void checkRegistrationFormTest() {
         step("Открыть страницу формы регистрации", () -> {
